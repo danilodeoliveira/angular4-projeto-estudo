@@ -1,0 +1,38 @@
+<h5>Cadastre-se</h5>
+
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="name" type="text" class="validate" formControlName="name" [ngClass]="initValidation('name')">
+      <label class="active">Nome</label>
+      <app-campo-control-erro [mostrarErro]="validatorForm.verificaRequiredInvalido('name')" msgErro="Nome é obrigatório">
+      </app-campo-control-erro>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="email" type="email" class="validate" formControlName="email" [ngClass]="initValidation('email')">
+      <label class="active">E-mail</label>
+      <app-campo-control-erro [mostrarErro]="validatorForm.verificaRequiredInvalido('email')" msgErro="E-mail é obrigatório">
+      </app-campo-control-erro>
+      <app-campo-control-erro [mostrarErro]="validatorForm.verificaEmailInvalido()" msgErro="E-mail inválido">
+      </app-campo-control-erro>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="senha" type="password" class="validate" formControlName="password" [ngClass]="initValidation('password')">
+      <label class="active">Senha</label>
+      <app-campo-control-erro [mostrarErro]="validatorForm.verificaRequiredInvalido('password')" msgErro="A senha é obrigatória">
+      </app-campo-control-erro>
+    </div>
+  </div>
+
+  <button class="btn waves-effect waves-light" type="submit" [disabled]="!formulario.valid">
+    Cadastre-se
+    <i class="material-icons right">send</i>
+  </button>
+
+</form>
