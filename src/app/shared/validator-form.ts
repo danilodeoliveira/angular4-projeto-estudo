@@ -16,17 +16,15 @@ export class ValidatorForm {
         );
     }
 
-    verificaRequiredInvalido(campo: string) {
+    showMessageError(campo: string, type: string){
         const campoRequired = this.formulario.get(campo);
         if (campoRequired.errors) {
-            return campoRequired.errors['required'] && campoRequired.touched;
-        }
-    }
-
-    verificaEmailInvalido() {
-        const campoEmail = this.formulario.get('email');
-        if (campoEmail.errors) {
-            return campoEmail.errors['email'] && campoEmail.value && campoEmail.touched;
+            if (campoRequired.errors['required'] && type == 'required')
+                return campoRequired.errors['required'] && campoRequired.touched;
+            else if (campoRequired.errors['email'] && type == 'emailInvalid')
+                return campoRequired.errors['email'] && campoRequired.value && campoRequired.touched;
+            else if (campoRequired.errors['minlength'] && type == 'minLength')
+                return campoRequired.errors['minlength'] && campoRequired.value && campoRequired.touched;
         }
     }
 

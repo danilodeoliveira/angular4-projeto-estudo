@@ -5,9 +5,9 @@
     <div class="input-field col s12">
       <input id="email" type="email" class="validate" formControlName="email" [ngClass]="initValidation('email')">
       <label class="active">E-mail</label>
-      <app-campo-control-erro [mostrarErro]="validatorForm.verificaRequiredInvalido('email')" msgErro="E-mail é obrigatório">
+      <app-campo-control-erro [mostrarErro]="validatorForm.showMessageError('email', 'required')" msgErro="E-mail é obrigatório">
       </app-campo-control-erro>
-      <app-campo-control-erro [mostrarErro]="validatorForm.verificaEmailInvalido()" msgErro="E-mail inválido">
+      <app-campo-control-erro [mostrarErro]="validatorForm.showMessageError('email', 'emailInvalid')" msgErro="E-mail inválido">
       </app-campo-control-erro>
     </div>
   </div>
@@ -16,7 +16,9 @@
     <div class="input-field col s12">
       <input id="senha" type="password" class="validate" formControlName="password" [ngClass]="initValidation('password')">
       <label class="active">Senha</label>
-      <app-campo-control-erro [mostrarErro]="validatorForm.verificaRequiredInvalido('password')" msgErro="A senha é obrigatória">
+      <app-campo-control-erro [mostrarErro]="validatorForm.showMessageError('password', 'required')" msgErro="A senha é obrigatória">
+      </app-campo-control-erro>
+      <app-campo-control-erro [mostrarErro]="validatorForm.showMessageError('password', 'minLength')" msgErro="A senha deve ter no mínimo 6 caracteres">
       </app-campo-control-erro>
     </div>
   </div>

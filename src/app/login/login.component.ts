@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.formulario = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
-      password: [null, Validators.required]
+      password: [null, [Validators.required, Validators.minLength(6)]]
     })
 
     this.validatorForm = new ValidatorForm(this.formulario);
@@ -45,30 +45,6 @@ export class LoginComponent implements OnInit {
   resetForm(){
     this.formulario.reset();
   }
-
-  /* verificaValidTouched(campo: string) {
-    if (this.formulario.get(campo).errors){
-      return (
-        this.formulario.get(campo).errors['required'] &&
-        (this.formulario.get(campo).touched || this.formulario.get(campo).dirty)
-      );
-    }else
-      return false;
-  }
-
-  verificaEmailInvalido() {
-    const campoEmail = this.formulario.get('email');
-    if (campoEmail.errors) {
-      return campoEmail.errors['email'] && campoEmail.value && campoEmail.touched;
-    }
-  }
-
-  aplicaCssErro(campo: string) {
-    return {
-      'invalid': this.verificaValidTouched(campo),
-      'has-feedback': this.verificaValidTouched(campo)
-    };
-  } */
 
   initValidation(campo){
     return this.validatorForm.aplicaCssErro(campo);
